@@ -4,22 +4,26 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-md-8 card mb-4  mt-3 left  top">
+    <div class="col-md-12 card mb-4  mt-3 left top">
       <div class="card-body">
         <h1>{% block title %} {{ post.title }} {% endblock title %}</h1>
-        <p class=" text-muted">{{ post.author }} | {{ post.created_on }}</p>
+        <p class=" text-muted">{{ post.author }} | {{ post.created_on }} </p>
+        <p class=" text-muted">{{ post.subtitle }}</p>
         <p class="card-text ">{{ post.content | safe }}</p>
       </div>
     </div>
-    {% block sidebar %} {% include 'sidebar.html' %} {% endblock sidebar %}
 
-    <div class="col-md-8 card mb-4  mt-3 ">
+    {% comment %}
+    {% block sidebar %} {% include 'sidebar.html' %} {% endblock sidebar %}
+    {% endcomment %}
+
+    <div class="col-md-12 card mb-4  mt-3 ">
       <div class="card-body">
         <!-- comments -->
         {% if comments.count == 1 %}
-        <h2>{{ comments.count }} commento</h2>
+        <h4>{{ comments.count }} commento</h4>
         {% else %}
-        <h2>{{ comments.count }} commenti</h2>
+        <h4>{{ comments.count }} commenti</h4>
         {% endif %}
 
         {% for comment in comments %}
@@ -35,7 +39,7 @@
         {% endfor %}
       </div>
     </div>
-    <div class="col-md-8 card mb-4  mt-3 ">
+    <div class="col-md-12 card mb-4  mt-3 ">
       <div class="card-body">
         {% if new_comment %}
         <div class="alert alert-success" role="alert">
